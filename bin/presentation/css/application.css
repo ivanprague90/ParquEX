@@ -1,0 +1,78 @@
+/* JavaFX CSS */
+
+.header {
+	-fx-background-color: linear-gradient(#395056 0%, #14313d 100%);
+	/*-fx-background-image: url("../images/bgpattern.png");
+    -fx-background-repeat: repeat;*/
+}
+
+.ipad-grey {
+    -fx-background-color:  
+        linear-gradient(#020b02, #3a3a3a),
+        linear-gradient(#f5f5f5 0%, #dbdbdb 50%, #cacaca 51%, #d7d7d7 100%);
+    -fx-background-insets: 0,1,4,5;
+    -fx-background-radius: 9,8,5,4;
+    -fx-padding: 10 25 10 25;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}
+
+.ipad-grey:hover {
+    -fx-background-color:
+        linear-gradient(#020b02, #3a3a3a),
+        linear-gradient(#f5f5f5 0%, #dbdbdb 100%);
+}
+
+.ipad-grey Text {
+    -fx-effect: dropshadow( one-pass-box , white , 0, 0.0 , 0 , 1 );
+}
+
+.ipad-blue {
+    -fx-background-color: 
+        linear-gradient(#020b02, #3a3a3a),
+        linear-gradient(#395056 0%, #26363D 50%, #1B333d 51%, #14313d 100%);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 15 30 15 30;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
+}
+
+.ipad-blue:hover {
+    -fx-background-color:
+        linear-gradient(#020b02, #3a3a3a),
+        linear-gradient(#395056 0%, #26363D 100%);
+}
+
+.ipad-blue Text {
+    -fx-effect: dropshadow( one-pass-box , black , 0, 0.0 , 0 , -1 );
+}
+
+.text-field, .text-area {
+	-fx-font-size: 20;
+    -fx-background-color:
+    	rgb(255, 255, 255, 0.3),
+    	linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.8) 50%),
+        #F9F9F9;
+    -fx-background-insets: 0 0 -1 0, 0, 1.5;
+    -fx-background-radius: 6, 5, 4;
+    -fx-padding: 10;
+    -fx-effect: innershadow( gaussian, rgb(0, 0, 0, 0.8), 5, 0, 0, 2 );
+}
+
+.text-area {
+	-fx-padding: 6 5 6 5;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-prompt-text-fill:
+        rgb(128,128,128);
+    -fx-background-color:
+    	rgb(235, 235, 235, 0.5),
+        rgb(0, 0, 0, 0.4),
+        #FFFFFF;
+}
