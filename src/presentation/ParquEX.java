@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 public class ParquEX extends Application {
 	private static String mainFXML = "../views/MainView.fxml";
+	private static String searchQuestionFXML = "../views/SearchQuestionView.fxml";
+	private static String questionFXML = "../views/QuestionView.fxml";
 	
 	private ScreenDispatcher screensContainer = new ScreenDispatcher();
 
@@ -18,6 +20,8 @@ public class ParquEX extends Application {
 
 		screensContainer.setFC(this);
 		screensContainer.loadScreen("main", ParquEX.mainFXML);
+		screensContainer.loadScreen("searchQuestion", ParquEX.searchQuestionFXML);
+		screensContainer.loadScreen("question", ParquEX.questionFXML);
 		screensContainer.setScreen("main", null);
 
 		Scene scene = new Scene(screensContainer);

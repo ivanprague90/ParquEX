@@ -10,7 +10,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="CarLoan" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.SearchQuestionView">
+<AnchorPane id="CarLoan" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.SearchQuestionController">
    <children>
       <SplitPane dividerPositions="0.1947" layoutX="10.0" layoutY="56.0" prefHeight="656.0" prefWidth="1034.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -39,7 +39,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="600.0" prefWidth="576.0" SplitPane.resizableWithParent="false">
                <children>
-                  <BorderPane prefHeight="598.0" prefWidth="792.0">
+                  <BorderPane prefHeight="598.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <bottom>
                         <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
@@ -54,7 +54,7 @@
                                     <Insets right="15.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="btnDeleteQuestion" alignment="TOP_LEFT" disable="true" layoutX="617.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonDeleteUser" styleClass="ipad-blue" text="ELIMINA">
+                              <Button fx:id="btnDeleteQuestion" alignment="TOP_LEFT" disable="true" layoutX="617.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonDeleteQuestion" styleClass="ipad-blue" text="ELIMINA">
                                  <font>
                                     <Font size="20.0" />
                                  </font>

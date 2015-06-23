@@ -57,7 +57,7 @@ public class MainController implements Initializable, ScreenController {
 	@FXML
 	private void handleButtonQuestions(ActionEvent event)
 			throws IOException {
-		//app.setScreen("signup", null);
+		app.setScreen("searchQuestion", null);
 	}
 	
 	@FXML
