@@ -43,9 +43,9 @@ public class PrecursorTO implements Serializable {
     	String s = Question.getQuestion(idQuestion).getAttribute();
     	
     	if (isOrNot.equals("is"))
-    		s += " è " + answer;
+    		s += " E' " + answer;
     	else 
-    		s += " non è " + answer;
+    		s += " NON E' " + answer;
 		
     	return s;
 	}

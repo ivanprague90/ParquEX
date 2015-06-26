@@ -7,9 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class ParquEX extends Application {
-	private static String mainFXML = "../views/MainView.fxml";
-	private static String searchQuestionFXML = "../views/SearchQuestionView.fxml";
-	private static String questionFXML = "../views/QuestionView.fxml";
+	public static String mainFXML = "../views/MainView.fxml";
+	public static String searchQuestionFXML = "../views/SearchQuestionView.fxml";
+	public static String questionFXML = "../views/QuestionView.fxml";
+	public static String modifyQuestionFXML = "../views/ModifyQuestionView.fxml";
 	
 	private ScreenDispatcher screensContainer = new ScreenDispatcher();
 
@@ -31,6 +32,7 @@ public class ParquEX extends Application {
 						//"views/images/icon.png")));
 		primaryStage.setTitle("ParquEX");
 		primaryStage.setScene(scene);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
 

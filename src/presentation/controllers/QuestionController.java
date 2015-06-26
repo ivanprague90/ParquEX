@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import presentation.Parameter;
+import presentation.ParquEX;
 import business.representations.QuestionTO;
 
 public class QuestionController extends MainController {
@@ -42,6 +43,9 @@ public class QuestionController extends MainController {
 	@FXML
 	private void handleButtonModifyQuestion(ActionEvent event)
 			throws IOException {
-		// app.setScreen("signup", null);
+		app.loadScreen("modifyQuestion", ParquEX.modifyQuestionFXML);
+		Parameter parameter = new Parameter();
+		parameter.setValue(question);
+		app.setScreen("modifyQuestion", parameter);
 	}
 }

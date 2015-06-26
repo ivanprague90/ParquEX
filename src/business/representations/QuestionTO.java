@@ -8,7 +8,7 @@ import business.representations.questions.precursors.PrecursorTO;
 
 public class QuestionTO implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
     private String attribute;
     
@@ -76,5 +76,10 @@ public class QuestionTO implements Serializable {
     public void setValidAnswers(List<String> validAnswers) {
         this.validAnswers = validAnswers;
     }
+    
+    @Override
+	public String toString() {
+		return "" + attribute;
+	}
 
 }

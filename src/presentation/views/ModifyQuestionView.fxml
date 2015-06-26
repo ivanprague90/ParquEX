@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="CarLoan" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.ModifyQuestionController">
+   <children>
+      <SplitPane dividerPositions="0.1947" layoutX="10.0" layoutY="56.0" prefHeight="656.0" prefWidth="1034.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="224.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <VBox alignment="TOP_CENTER" fillWidth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="btnEssences" alignment="CENTER" mnemonicParsing="false" onAction="#handleButtonEssences" prefWidth="224.0" styleClass="ipad-blue" text="ESSENZE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnQuestions" alignment="CENTER" mnemonicParsing="false" onAction="#handleButtonQuestions" prefWidth="224.0" styleClass="ipad-blue" text="DOMANDE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnRules" alignment="CENTER" mnemonicParsing="false" onAction="#handleButtonRules" prefWidth="224.0" styleClass="ipad-blue" text="REGOLE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="600.0" prefWidth="576.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <ScrollPane prefHeight="598.0" prefWidth="568.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <BorderPane fx:id="brdPane" prefHeight="596.0" prefWidth="553.0">
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                           <top>
+                              <Label text="MODIFICA DOMANDA" BorderPane.alignment="TOP_LEFT">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <bottom>
+                              <BorderPane BorderPane.alignment="CENTER">
+                                 <top>
+                                    <Label fx:id="lblNotifyModQuestion" alignment="CENTER" prefWidth="700.0" textFill="RED" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </top>
+                                 <center>
+                                    <Button fx:id="btnConfirmModifyQuestion" mnemonicParsing="false" onAction="#handleButtonConfirm" styleClass="ipad-blue" text="CONFERMA" BorderPane.alignment="CENTER_RIGHT">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                       <BorderPane.margin>
+                                          <Insets />
+                                       </BorderPane.margin>
+                                    </Button>
+                                 </center>
+                              </BorderPane>
+                           </bottom>
+                           <center>
+                              <VBox spacing="10.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="225.0" spacing="10.0">
+                                       <children>
+                                          <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" text="Attributo:">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txtModifyAttribute" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="25.0" spacing="10.0">
+                                       <children>
+                                          <Label minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" text="Domanda:">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextArea fx:id="txtModifyQuestion" prefHeight="60.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="65.0" spacing="10.0">
+                                       <children>
+                                          <Label minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" text="Motivazione:">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextArea fx:id="txtModifyWhy" prefHeight="60.0" />
+                                       </children>
+                                    </HBox>
+                                    <VBox fx:id="vBoxValidAnswers" prefWidth="100.0">
+                                       <children>
+                                          <HBox fx:id="hBoxValidAnswer0" alignment="CENTER_LEFT" spacing="10.0">
+                                             <children>
+                                                <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" text="Risposte valide:">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="txtModifyAnswer0" prefWidth="150.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="vBoxPrecursors" prefWidth="100.0">
+                                       <children>
+                                          <HBox fx:id="hBoxPrecursor0" spacing="10.0">
+                                             <children>
+                                                <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" text="Precursori:">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <VBox fx:id="vBoxPrecursor0" alignment="TOP_CENTER" prefWidth="150.0" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

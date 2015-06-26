@@ -49,6 +49,10 @@ public class SearchQuestionController extends MainController {
 		
 		txtSearch.setText("");
 		
+		btnDeleteQuestion.setDisable(true);
+		
+		btnViewQuestion.setDisable(true);
+		
 		questionData = FXCollections
 				.observableArrayList();
 		filteredData = FXCollections
