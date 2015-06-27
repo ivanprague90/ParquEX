@@ -1,5 +1,6 @@
 package presentation;
 
+import business.QuestionService;
 import business.services.RetrievesEntitiesAS;
 import presentation.controllers.ScreenDispatcher;
 import javafx.application.Application;
@@ -8,8 +9,6 @@ import javafx.stage.Stage;
 
 public class ParquEX extends Application {
 	private static String mainFXML = "../views/MainView.fxml";
-	private static String searchQuestionFXML = "../views/SearchQuestionView.fxml";
-	private static String questionFXML = "../views/QuestionView.fxml";
 	
 	private ScreenDispatcher screensContainer = new ScreenDispatcher();
 
@@ -17,11 +16,12 @@ public class ParquEX extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		RetrievesEntitiesAS retrievesEntities = new RetrievesEntitiesAS();
 		retrievesEntities.retrievesEntities();
+		
+		QuestionService.modifyQuestion();
+		QuestionService.setPrecursorPreference();
 
 		screensContainer.setFC(this);
 		screensContainer.loadScreen("main", ParquEX.mainFXML);
-		screensContainer.loadScreen("searchQuestion", ParquEX.searchQuestionFXML);
-		screensContainer.loadScreen("question", ParquEX.questionFXML);
 		screensContainer.setScreen("main", null);
 
 		Scene scene = new Scene(screensContainer);
