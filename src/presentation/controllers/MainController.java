@@ -2,12 +2,9 @@ package presentation.controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -18,21 +15,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+
+import javax.swing.ToolTipManager;
+
+import net.sf.clipsrules.jni.Environment;
 import presentation.Parameter;
 import business.QuestionManager;
 import business.QuestionService;
-import business.representations.QuestionTO;
-import business.representations.questions.precursors.PrecursorTO;
 
 public class MainController implements Initializable, ScreenController {
 	protected ScreenDispatcher app;
-	Map<String, QuestionManager> entryQuestion;
-	Map<String, QuestionManager> allQuestion;
+	private Map<String, QuestionManager> entryQuestion;
+	private Map<String, QuestionManager> questionAnswered;
 	private ToggleGroup g;
-	QuestionManager q;
-	RadioButton rbAnswer;
-	Random r;
+	private QuestionManager q;
+	private RadioButton rbAnswer;
+
+	@FXML
+	private Label lblWhy;
 
 	@FXML
 	private Label lblQuestion;
@@ -53,76 +57,95 @@ public class MainController implements Initializable, ScreenController {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		questionAnswered = new HashMap<String, QuestionManager>();
 		entryQuestion = QuestionService.setEntrySet();
 		vbxAnswer.setPadding(new Insets(50, 20, 0, 0));
 		vbxAnswer.setSpacing(50);
+		lblQuestion.setPrefHeight(80);
+		lblQuestion.setFont(new Font("Arial", 20));
 	}
 
 	@Override
 	public void onSetScreen(Parameter parameter) {
-		/*
-		 * CreateClipsRulesAS createClipsRules = new CreateClipsRulesAS();
-		 * ArrayList<String> clipsRules = (ArrayList<String>)
-		 * createClipsRules.createClipsRules();
-		 * lblRule.setText(clipsRules.get(0));
-		 */
+		
+		if (parameter != null) {
+			questionAnswered = new HashMap<String, QuestionManager>(
+					(HashMap<String, QuestionManager>) parameter.getValue(0));
 
-		r = new Random();
+			entryQuestion = new HashMap<String, QuestionManager>();
 
-		List<String> keysAsArray = new ArrayList<String>(entryQuestion.keySet());
+			QuestionService.resetPrecursorAdmitted();
+			for (Map.Entry<String, QuestionManager> qa : questionAnswered
+					.entrySet()) {
+				QuestionService.setPrecursorAdmitted(qa.getValue());
+			}
 
-		if (!entryQuestion.isEmpty())
-			q = entryQuestion
-					.get(keysAsArray.get(r.nextInt(keysAsArray.size())));
-
-		lblQuestion.setText(q.getTheQuestion());
-		entryQuestion.remove(q.getId());
-		lblQuestion.setWrapText(true);
-
-		Iterator<String> it = q.getValidAnswers().iterator();
-
-		g = new ToggleGroup();
-
-		vbxAnswer.getChildren().clear();
-
-		while (it.hasNext()) {
-			String answ = it.next();
-			rbAnswer = new RadioButton();
-			rbAnswer.setText(answ);
-			rbAnswer.setToggleGroup(g);
-			vbxAnswer.getChildren().add(rbAnswer);
+			QuestionService.addAdmittedQuestion(entryQuestion);
 		}
+		if (entryQuestion.isEmpty()) {
+			Parameter parameter2 = new Parameter();
+			parameter.setValue(questionAnswered);
+			app.setScreen("result", parameter);
+		} else {
+
+			lblWhy.setVisible(false);
+
+			q = QuestionService.callQuestion(entryQuestion);
+
+			if (q.getWhy() != null) {
+				lblWhy.setVisible(true);
+			}
+
+			lblQuestion.setText(q.getTheQuestion());
+			entryQuestion.remove(q.getId());
+			lblQuestion.setWrapText(true);
+
+			Iterator<String> it = q.getValidAnswers().iterator();
+
+			g = new ToggleGroup();
+
+			vbxAnswer.getChildren().clear();
+
+			while (it.hasNext()) {
+				String answ = it.next();
+				rbAnswer = new RadioButton();
+				rbAnswer.setText(answ);
+				rbAnswer.setToggleGroup(g);
+				vbxAnswer.getChildren().add(rbAnswer);
+			}
+		}
+
+	}
+
+	@FXML
+	private void handle(MouseEvent arg0) {
+		final Tooltip tooltip = new Tooltip();
+
+		ToolTipManager.sharedInstance().setDismissDelay(10000);
+
+		tooltip.setText(q.getWhy());
+		tooltip.setFont(new Font("Arial", 10));
+		lblWhy.setTooltip(tooltip);
 	}
 
 	@FXML
 	private void handleButtonAnswer(ActionEvent event) throws IOException {
 
-		String answer = new String();
-		answer = ((RadioButton) g.getSelectedToggle()).getText();
+		q.setAnswer(((RadioButton) g.getSelectedToggle()).getText());
+		questionAnswered.put(q.getId(), q);
 
-		System.out.println(q.getAttribute() + " is " + answer);
+		System.out.println(q.getAttribute() + " is " + q.getAnswer());
 
-		if (!q.getQuestionInterested().isEmpty()) {
-			for (String element : q.getQuestionInterested()) {
-				QuestionManager qm = new QuestionManager();
-				qm = QuestionService.getQuestion(element);
-				for (PrecursorTO elementList : qm.getPrecursors()) {
-					if (elementList.getIdQuestion().equals(q.getId())) {
-						if ((elementList.getAnswer().equals(answer) && elementList
-								.getIsOrNot().equals("is"))
-								|| (!elementList.getAnswer().equals(answer) && elementList
-										.getIsOrNot().equals("is not")))
+		QuestionService.setPrecursorAdmitted(q);
 
-							entryQuestion.put(element,
-									QuestionService.getQuestion(element));
-					}
-				}
-			}
-		}
+		QuestionService.addAdmittedQuestion(entryQuestion);
+
 		if (!entryQuestion.isEmpty())
-			this.onSetScreen(new Parameter());
+			this.onSetScreen(null);
 		else {
+			Parameter parameter = new Parameter();
+			parameter.setValue(questionAnswered);
+			app.setScreen("result", parameter);
 		}
 	}
-
 }

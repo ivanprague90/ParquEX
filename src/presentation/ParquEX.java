@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 
 public class ParquEX extends Application {
 	private static String mainFXML = "../views/MainView.fxml";
+	private static String resultFXML = "../views/ResultView.fxml";
+	private static String retractFXML = "../views/RetractView.fxml";
+	private static String questionRetractedFXML = "../views/QuestionRetractedView.fxml";
 	
 	private ScreenDispatcher screensContainer = new ScreenDispatcher();
 
@@ -22,6 +25,9 @@ public class ParquEX extends Application {
 
 		screensContainer.setFC(this);
 		screensContainer.loadScreen("main", ParquEX.mainFXML);
+		screensContainer.loadScreen("result", ParquEX.resultFXML);
+		screensContainer.loadScreen("retract", ParquEX.retractFXML);
+		screensContainer.loadScreen("questionRetracted", ParquEX.questionRetractedFXML);
 		screensContainer.setScreen("main", null);
 
 		Scene scene = new Scene(screensContainer);

@@ -19,11 +19,20 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <top>
-                  <Label fx:id="lblQuestion" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                  </Label>
+                  <HBox spacing="20.0">
+                     <children>
+                        <Label fx:id="lblWhy" layoutX="58.0" layoutY="10.0" onMouseEntered="#handle" text=" ? " textFill="#ff5e00">
+                           <font>
+                              <Font name="System Bold" size="50.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblQuestion">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </top>
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
