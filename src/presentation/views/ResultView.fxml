@@ -30,10 +30,13 @@
          <center>
             <HBox BorderPane.alignment="CENTER">
                <children>
-                  <VBox fx:id="vbxResult" spacing="20.0" />
-                  <VBox spacing="20.0">
+                  <VBox fx:id="vbxResult" prefWidth="380.0" spacing="20.0" />
+                  <VBox prefWidth="380.0" spacing="20.0">
                      <children>
-                        <Label fx:id="lblEssence" underline="true" />
+                        <Label fx:id="lblEssence" alignment="CENTER" contentDisplay="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Label>
                         <Label fx:id="lblDescription" wrapText="true" />
                         <Label fx:id="lblProperty" />
                      </children>

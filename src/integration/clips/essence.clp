@@ -202,6 +202,11 @@
         (then best-durezza is media with certainty 95 and
               best-durezza is elevata with certainty 85 and
               best-durezza is molto-elevata with certainty 55))
+			  
+  (rule (if walkable is poco)
+        (then best-durezza is media with certainty 95 and
+              best-durezza is elevata with certainty 85 and
+              best-durezza is molto-elevata with certainty 75))
 		
   (rule (if walkable is nonso)
         (then best-durezza is media with certainty 50 and

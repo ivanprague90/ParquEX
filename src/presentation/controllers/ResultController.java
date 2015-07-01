@@ -2,20 +2,20 @@ package presentation.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.Normalizer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import business.QuestionManager;
-import business.QuestionService;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.RadioButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import net.sf.clipsrules.jni.Environment;
@@ -24,11 +24,18 @@ import net.sf.clipsrules.jni.LexemeValue;
 import net.sf.clipsrules.jni.MultifieldValue;
 import net.sf.clipsrules.jni.NumberValue;
 import presentation.Parameter;
+import business.Essence;
+import business.QuestionManager;
+import business.representations.EssenceTO;
+import business.representations.essences.property.PropertyTO;
 
 public class ResultController implements Initializable, ScreenController {
 	protected ScreenDispatcher app;
 	private Environment clips;
 	private Map<String, QuestionManager> questionAnswered;
+	private String essence;
+	private String description;
+	private String propty;
 
 	@FXML
 	private VBox vbxResult;
@@ -64,6 +71,11 @@ public class ResultController implements Initializable, ScreenController {
 
 	@Override
 	public void onSetScreen(Parameter parameter) {
+		essence = new String("CIAO");
+		description = new String("CIAO");
+		propty = new String("CIAO");
+		
+		
 		clips.reset();
 		
 		vbxResult.getChildren().clear();
@@ -102,7 +114,7 @@ public class ResultController implements Initializable, ScreenController {
 			pbs.setProgress(n.doubleValue() / 100);
 			pins.setProgress(n.doubleValue() / 100);
 
-			String essenceName = "ciao";
+			String essenceName = "";
 			try {
 				essenceName = ((LexemeValue) fv.getFactSlot("value"))
 						.lexemeValue();
@@ -113,11 +125,43 @@ public class ResultController implements Initializable, ScreenController {
 
 			nameEssence.setText(essenceName.toUpperCase());
 
+			
+			
+			
 			nameEssence.setPrefWidth(150);
 			pbs.setPrefWidth(100);
 			row.setSpacing(10);
 			row.getChildren().clear();
+			
+			row.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+			     @Override
+			     public void handle(MouseEvent event) {
+			    	 for (Map.Entry<String, EssenceTO> allEssences : Essence.getEssences().entrySet()) {
+							String name = new String();
+							name = allEssences.getValue().getName();
+							name = Normalizer.normalize(name, Normalizer.Form.NFD);
+							if (((Label) row.getChildren().get(0)).getText().toLowerCase().equals(name.toLowerCase().replaceAll("[^\\p{ASCII}]", "").replaceAll("\\s", ""))) {
+								
+								lblEssence.setText(allEssences.getValue().getName().toUpperCase());
+								lblDescription.setText(allEssences.getValue().getDescription());
+								
+								String property = new String();
+								for (PropertyTO prop : allEssences.getValue().getProperty()) {
+									property += prop.getKey() + ": " + prop.getValue() + "\n";
+								}
+								
+								lblProperty.setText(property);
+							}
+							
+						}	 
+			         
+			         //event.consume();
+			     }
+			});
+			
 			row.getChildren().addAll(nameEssence, pbs, pins);
+			
 			vbxResult.getChildren().add(row);
 		}
 

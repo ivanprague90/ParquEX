@@ -84,8 +84,8 @@ public class MainController implements Initializable, ScreenController {
 		}
 		if (entryQuestion.isEmpty()) {
 			Parameter parameter2 = new Parameter();
-			parameter.setValue(questionAnswered);
-			app.setScreen("result", parameter);
+			parameter2.setValue(questionAnswered);
+			app.setScreen("result", parameter2);
 		} else {
 
 			lblWhy.setVisible(false);
