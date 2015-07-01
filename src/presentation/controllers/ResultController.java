@@ -35,6 +35,15 @@ public class ResultController implements Initializable, ScreenController {
 
 	@FXML
 	private Button btnRetract;
+	
+	@FXML
+    private Label lblEssence;
+
+    @FXML
+    private Label lblDescription;
+
+    @FXML
+    private Label lblProperty;
 
 	// Per inizializzazioni di schermata con uso di page usare overriding
 	// del metodo setScreenPane altrimenti overriding del metodo initialize
@@ -102,7 +111,6 @@ public class ResultController implements Initializable, ScreenController {
 				e.printStackTrace();
 			}
 
-			System.out.println(certainty);
 			nameEssence.setText(essenceName.toUpperCase());
 
 			nameEssence.setPrefWidth(150);
