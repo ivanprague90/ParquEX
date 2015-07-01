@@ -33,9 +33,6 @@ public class ResultController implements Initializable, ScreenController {
 	protected ScreenDispatcher app;
 	private Environment clips;
 	private Map<String, QuestionManager> questionAnswered;
-	private String essence;
-	private String description;
-	private String propty;
 
 	@FXML
 	private VBox vbxResult;
@@ -70,11 +67,11 @@ public class ResultController implements Initializable, ScreenController {
 	}
 
 	@Override
-	public void onSetScreen(Parameter parameter) {
-		essence = new String("CIAO");
-		description = new String("CIAO");
-		propty = new String("CIAO");
+	public void onSetScreen(Parameter parameter) {		
 		
+		lblDescription.setText("");
+		lblEssence.setText("");
+		lblProperty.setText("");
 		
 		clips.reset();
 		
@@ -96,7 +93,6 @@ public class ResultController implements Initializable, ScreenController {
 			final ProgressBar pbs = new ProgressBar(100);
 			final ProgressIndicator pins = new ProgressIndicator(100);
 
-			Label cert = new Label();
 			FactAddressValue fv = (FactAddressValue) pv.get(i);
 
 			int certainty = 0;
@@ -125,9 +121,6 @@ public class ResultController implements Initializable, ScreenController {
 
 			nameEssence.setText(essenceName.toUpperCase());
 
-			
-			
-			
 			nameEssence.setPrefWidth(150);
 			pbs.setPrefWidth(100);
 			row.setSpacing(10);
@@ -141,7 +134,8 @@ public class ResultController implements Initializable, ScreenController {
 							String name = new String();
 							name = allEssences.getValue().getName();
 							name = Normalizer.normalize(name, Normalizer.Form.NFD);
-							if (((Label) row.getChildren().get(0)).getText().toLowerCase().equals(name.toLowerCase().replaceAll("[^\\p{ASCII}]", "").replaceAll("\\s", ""))) {
+							
+							if (((Label) row.getChildren().get(0)).getText().toLowerCase().replaceAll("-", " ").equals(name.toLowerCase().replaceAll("[^\\p{ASCII}]", ""))) {
 								
 								lblEssence.setText(allEssences.getValue().getName().toUpperCase());
 								lblDescription.setText(allEssences.getValue().getDescription());
@@ -155,8 +149,6 @@ public class ResultController implements Initializable, ScreenController {
 							}
 							
 						}	 
-			         
-			         //event.consume();
 			     }
 			});
 			
