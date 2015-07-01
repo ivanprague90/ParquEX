@@ -44,14 +44,29 @@
             </AnchorPane>
             <AnchorPane prefHeight="600.0" prefWidth="576.0" SplitPane.resizableWithParent="false">
                <children>
-                  <BorderPane layoutX="139.0" layoutY="140.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </padding>
-                     <center>
-                        <Label fx:id="lblRule" prefHeight="600.0" prefWidth="576.0" BorderPane.alignment="CENTER" />
-                     </center>
-                  </BorderPane>
+                  <ScrollPane prefHeight="598.0" prefWidth="568.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <BorderPane fx:id="brdPane" prefHeight="596.0" prefWidth="553.0">
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                           <top>
+                              <Label text="ESSENZE" BorderPane.alignment="TOP_LEFT">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <center>
+                              <VBox fx:id="vBoxEssences" spacing="10.0" BorderPane.alignment="CENTER">
+                                 <padding>
+                                    <Insets bottom="15.0" top="15.0" />
+                                 </padding>
+                              </VBox>
+                           </center>
+                        </BorderPane>
+                     </content>
+                  </ScrollPane>
                </children>
             </AnchorPane>
          </items>

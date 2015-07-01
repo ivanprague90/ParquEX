@@ -4,6 +4,7 @@ import business.services.RetrievesEntitiesAS;
 import presentation.controllers.ScreenDispatcher;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class ParquEX extends Application {
@@ -36,9 +37,9 @@ public class ParquEX extends Application {
 
 		Scene scene = new Scene(screensContainer);
 
-		//primaryStage.getIcons().add(
-				//new Image(getClass().getResourceAsStream(
-						//"views/images/icon.png")));
+		primaryStage.getIcons().add(
+				new Image(getClass().getResourceAsStream(
+						"images/icon.png")));
 		primaryStage.setTitle("ParquEX");
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);

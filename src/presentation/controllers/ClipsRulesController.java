@@ -21,7 +21,7 @@ public class ClipsRulesController extends MainController {
 			Label lblClipsRule = new Label();
 			
 			lblClipsRule.setText(clipsRules.get(i));
-			lblClipsRule.setMinHeight(100);
+			lblClipsRule.setMinHeight(Label.USE_PREF_SIZE);
 			
 			vBoxClipsRules.getChildren().add(lblClipsRule);
 		}

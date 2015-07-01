@@ -32,20 +32,20 @@
 .ipad-blue {
     -fx-background-color: 
         linear-gradient(#020b02, #3a3a3a),
-        linear-gradient(#395056 0%, #26363D 50%, #1B333d 51%, #14313d 100%);
+        linear-gradient(#F2E4CD 0%, #E2C686 50%, #DBBA79 51%, #A66F35 100%);
     -fx-background-insets: 0,1,2,3;
     -fx-background-radius: 3,2,2,2;
     -fx-padding: 15 30 15 30;
     -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
+    -fx-font-weight: normal;
+    -fx-text-fill: black;
     -fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.2) , 1, 0.0 , 0 , 1);
 }
 
 .ipad-blue:hover {
     -fx-background-color:
         linear-gradient(#020b02, #3a3a3a),
-        linear-gradient(#395056 0%, #26363D 100%);
+        linear-gradient(#F2E4CD 0%, #E2C686 100%);
 }
 
 .ipad-blue Text {
