@@ -6,7 +6,9 @@ import java.util.Map;
 
 import business.Question;
 import business.representations.QuestionTO;
+import business.services.DeleteEntitiesAS;
 import presentation.Parameter;
+import presentation.ParquEX;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -48,6 +50,8 @@ public class SearchQuestionController extends MainController {
 	public void onSetScreen(Parameter parameter) {	
 		
 		txtSearch.setText("");
+		
+		questionsTable.getSelectionModel().select(null);
 		
 		btnDeleteQuestion.setDisable(true);
 		
@@ -160,13 +164,24 @@ public class SearchQuestionController extends MainController {
     @FXML
 	private void handleButtonAddQuestion(ActionEvent event)
 			throws IOException {
-		//app.setScreen("signup", null);
+    	app.loadScreen("addQuestion", ParquEX.addQuestionFXML);
+		app.setScreen("addQuestion", null);
 	}
 	
 	@FXML
 	private void handleButtonDeleteQuestion(ActionEvent event)
 			throws IOException {
-		//app.setScreen("signup", null);
+		Parameter parameter = new Parameter();
+		parameter.setValue("question");
+		parameter.setValue(selectedQuestion);
+		DeleteEntitiesAS deleteEntitiesAS = new DeleteEntitiesAS();
+    	
+    	if (deleteEntitiesAS.deleteEntities(parameter)) {
+			app.setScreen("searchQuestion", null);
+		} else {
+			//lblNotifyModQuestion
+			//.setText("Errore inaspettato o connessione internet assente!");
+		}
 	}
 	
 	@FXML

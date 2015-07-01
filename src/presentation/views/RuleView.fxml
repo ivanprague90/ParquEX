@@ -10,7 +10,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="CarLoan" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.SearchQuestionController">
+<AnchorPane id="CarLoan" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.RuleController">
    <children>
       <SplitPane dividerPositions="0.1947" layoutX="10.0" layoutY="56.0" prefHeight="656.0" prefWidth="1034.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -44,36 +44,24 @@
             </AnchorPane>
             <AnchorPane prefHeight="600.0" prefWidth="576.0" SplitPane.resizableWithParent="false">
                <children>
-                  <BorderPane prefHeight="598.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <BorderPane prefHeight="598.0" prefWidth="568.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <Label text="REGOLA" BorderPane.alignment="CENTER_LEFT">
+                           <font>
+                              <Font size="35.0" />
+                           </font>
+                        </Label>
+                     </top>
                      <bottom>
                         <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button fx:id="btnAddQuestion" alignment="TOP_LEFT" layoutX="430.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonAddQuestion" styleClass="ipad-blue" text="AGGIUNGI">
+                              <Button fx:id="btnModifyRule" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#handleButtonModifyRule" styleClass="ipad-blue" text="MODIFICA">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
-                                 <padding>
-                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                 </padding>
                                  <HBox.margin>
-                                    <Insets right="15.0" />
+                                    <Insets />
                                  </HBox.margin>
-                              </Button>
-                              <Button fx:id="btnDeleteQuestion" alignment="TOP_LEFT" disable="true" layoutX="617.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonDeleteQuestion" styleClass="ipad-blue" text="ELIMINA">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                 </padding>
-                                 <HBox.margin>
-                                    <Insets right="15.0" />
-                                 </HBox.margin>
-                              </Button>
-                              <Button fx:id="btnViewQuestion" alignment="TOP_LEFT" disable="true" layoutX="617.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonViewQuestion" styleClass="ipad-blue" text="VISUALIZZA">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
                                  <padding>
                                     <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                                  </padding>
@@ -84,38 +72,56 @@
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>
-                     <top>
-                        <BorderPane BorderPane.alignment="CENTER">
-                           <left>
-                              <Label fx:id="lblTitle" text="DOMANDE" BorderPane.alignment="CENTER">
-                                 <font>
-                                    <Font size="35.0" />
-                                 </font>
-                              </Label>
-                           </left>
-                           <right>
-                              <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+                     <center>
+                        <VBox spacing="10.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="10.0">
                                  <children>
-                                    <Label text="Search">
+                                    <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" text="Nome:">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="txtSearch" />
+                                    <Label fx:id="lblName" nodeOrientation="LEFT_TO_RIGHT">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
                                  </children>
-                                 <padding>
-                                    <Insets right="15.0" />
-                                 </padding>
                               </HBox>
-                           </right>
-                        </BorderPane>
-                     </top>
-                     <center>
-                        <TableView fx:id="questionsTable" BorderPane.alignment="CENTER">
-                           <BorderPane.margin>
+                              <HBox layoutX="10.0" layoutY="25.0" spacing="10.0">
+                                 <children>
+                                    <Label alignment="TOP_LEFT" contentDisplay="TOP" minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" text="Condizioni:">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lblIff" nodeOrientation="LEFT_TO_RIGHT">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="65.0" spacing="10.0">
+                                 <children>
+                                    <Label alignment="TOP_LEFT" contentDisplay="TOP" minWidth="200.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="200.0" text="Azioni:">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lblThen" nodeOrientation="LEFT_TO_RIGHT" textOverrun="CLIP">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
                               <Insets top="15.0" />
-                           </BorderPane.margin>
-                        </TableView>
+                           </padding>
+                        </VBox>
                      </center>
                   </BorderPane>
                </children>

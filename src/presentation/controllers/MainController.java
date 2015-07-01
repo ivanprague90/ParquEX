@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import presentation.Parameter;
+import presentation.ParquEX;
 
 public class MainController implements Initializable, ScreenController {
 	protected ScreenDispatcher app;
@@ -24,6 +25,9 @@ public class MainController implements Initializable, ScreenController {
 
 	@FXML
 	private Button btnRules;
+	
+	@FXML
+	private Button btnClipsRules;
 
 	@FXML
 	private Label lblRule;
@@ -51,7 +55,7 @@ public class MainController implements Initializable, ScreenController {
 	@FXML
 	private void handleButtonEssences(ActionEvent event)
 			throws IOException {
-		//app.setScreen("signup", null);
+		app.setScreen("main", null);
 	}
 	
 	@FXML
@@ -63,7 +67,14 @@ public class MainController implements Initializable, ScreenController {
 	@FXML
 	private void handleButtonRules(ActionEvent event)
 			throws IOException {
-		//app.setScreen("signup", null);
+		app.setScreen("searchRule", null);
+	}
+	
+	@FXML
+	private void handleButtonClipsRules(ActionEvent event)
+			throws IOException {
+		app.loadScreen("clipsRules", ParquEX.clipsRulesFXML);
+		app.setScreen("clipsRules", null);
 	}
 
 }

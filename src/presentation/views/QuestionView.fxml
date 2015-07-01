@@ -33,6 +33,11 @@
                               <Font size="20.0" />
                            </font>
                         </Button>
+                        <Button fx:id="btnClipsRules" alignment="CENTER" layoutX="10.0" layoutY="124.0" mnemonicParsing="false" onAction="#handleButtonClipsRules" prefWidth="224.0" styleClass="ipad-blue" text="REGOLE CLIPS">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
                      </children>
                   </VBox>
                </children>

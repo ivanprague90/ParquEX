@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AttributeTO implements Serializable {
-	
-    private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 1L;
 
     private String id;
     
@@ -40,5 +40,10 @@ public class AttributeTO implements Serializable {
     public void setValues(List<String> values) {
         this.values = values;
     }
+    
+    @Override
+	public String toString() {
+		return "" + key;
+	}
 
 }

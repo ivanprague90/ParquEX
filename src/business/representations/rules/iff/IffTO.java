@@ -2,6 +2,8 @@ package business.representations.rules.iff;
 
 import java.io.Serializable;
 
+import business.Question;
+
 public class IffTO implements Serializable {
  
     private static final long serialVersionUID = 1L;
@@ -35,5 +37,17 @@ public class IffTO implements Serializable {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
+    
+    @Override
+	public String toString() {
+    	String s = Question.getQuestion(idQuestion).getAttribute();
+    	
+    	if (isOrNot.equals("is"))
+    		s += " E' " + answer;
+    	else 
+    		s += " NON E' " + answer;
+		
+    	return s;
+	}
 
 }

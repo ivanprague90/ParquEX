@@ -9,14 +9,15 @@ import integration.QuestionsDAO;
 import integration.RulesDAO;
 import presentation.Parameter;
 
-public class UpdateEntitiesAS {
-	public Boolean updateEntities(Parameter parameter) {
+public class CreateEntitiesAS {
+	public Boolean createEntities(Parameter parameter) {
 		if (parameter.getValue(0).equals("question")) {
 			try {
 				QuestionsDAO questionsDAO = new QuestionsDAO();
 				QuestionTO question = (QuestionTO) parameter.getValue(1);
-				questionsDAO.update(question);
-				Question.removeQuestion(question.getId());
+				String questionId;
+				questionId = questionsDAO.create(question);
+				question.setId(questionId);
 				Question.addQuestion(question);
 				return true;
 			} catch (DAOException e) {
@@ -27,15 +28,16 @@ public class UpdateEntitiesAS {
 			try {
 				RulesDAO rulesDAO = new RulesDAO();
 				RuleTO rule = (RuleTO) parameter.getValue(1);
-				rulesDAO.update(rule);
-				Rule.removeRule(rule.getId());
+				String ruleId;
+				ruleId = rulesDAO.create(rule);
+				rule.setId(ruleId);
 				Rule.addRule(rule);
 				return true;
 			} catch (DAOException e) {
 				// TODO Auto-generated catch block
 				return false;
 			}
-		} 
+		}
 		
 		return false;
 	}

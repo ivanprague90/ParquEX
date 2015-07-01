@@ -1,16 +1,20 @@
 package business.services;
 
 import business.Attribute;
+import business.Essence;
 import business.Question;
 import business.Rule;
 import business.representations.AttributeListTO;
 import business.representations.AttributeTO;
+import business.representations.EssenceListTO;
+import business.representations.EssenceTO;
 import business.representations.QuestionListTO;
 import business.representations.QuestionTO;
 import business.representations.RuleListTO;
 import business.representations.RuleTO;
 import integration.AttributesDAO;
 import integration.DAOException;
+import integration.EssencesDAO;
 import integration.QuestionsDAO;
 import integration.RulesDAO;
 
@@ -38,6 +42,13 @@ public class RetrievesEntitiesAS {
 			ruleList = rulesDAO.findAll();
 			for (RuleTO rule : ruleList)
 				Rule.addRule(rule);
+			
+			EssencesDAO essencesDAO = new EssencesDAO();
+			EssenceListTO essenceList;
+
+			essenceList = essencesDAO.findAll();
+			for (EssenceTO essence : essenceList)
+				Essence.addEssence(essence);
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

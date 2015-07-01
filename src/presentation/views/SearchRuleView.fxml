@@ -10,7 +10,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="CarLoan" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.SearchQuestionController">
+<AnchorPane id="CarLoan" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.SearchRuleController">
    <children>
       <SplitPane dividerPositions="0.1947" layoutX="10.0" layoutY="56.0" prefHeight="656.0" prefWidth="1034.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
@@ -48,7 +48,7 @@
                      <bottom>
                         <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button fx:id="btnAddQuestion" alignment="TOP_LEFT" layoutX="430.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonAddQuestion" styleClass="ipad-blue" text="AGGIUNGI">
+                              <Button fx:id="btnAddRule" alignment="TOP_LEFT" layoutX="430.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonAddRule" styleClass="ipad-blue" text="AGGIUNGI">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -59,7 +59,7 @@
                                     <Insets right="15.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="btnDeleteQuestion" alignment="TOP_LEFT" disable="true" layoutX="617.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonDeleteQuestion" styleClass="ipad-blue" text="ELIMINA">
+                              <Button fx:id="btnDeleteRule" alignment="TOP_LEFT" disable="true" layoutX="617.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonDeleteRule" styleClass="ipad-blue" text="ELIMINA">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -70,7 +70,7 @@
                                     <Insets right="15.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="btnViewQuestion" alignment="TOP_LEFT" disable="true" layoutX="617.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonViewQuestion" styleClass="ipad-blue" text="VISUALIZZA">
+                              <Button fx:id="btnViewRule" alignment="TOP_LEFT" disable="true" layoutX="617.0" layoutY="53.0" mnemonicParsing="false" onAction="#handleButtonViewRule" styleClass="ipad-blue" text="VISUALIZZA">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -87,7 +87,7 @@
                      <top>
                         <BorderPane BorderPane.alignment="CENTER">
                            <left>
-                              <Label fx:id="lblTitle" text="DOMANDE" BorderPane.alignment="CENTER">
+                              <Label fx:id="lblTitle" text="REGOLE" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font size="35.0" />
                                  </font>
@@ -111,7 +111,7 @@
                         </BorderPane>
                      </top>
                      <center>
-                        <TableView fx:id="questionsTable" BorderPane.alignment="CENTER">
+                        <TableView fx:id="rulesTable" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets top="15.0" />
                            </BorderPane.margin>

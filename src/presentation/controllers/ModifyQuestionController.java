@@ -313,8 +313,9 @@ public class ModifyQuestionController extends MainController {
 		questionTO.setTheQuestion(txtModifyQuestion.getText());
 		questionTO.setWhy(txtModifyWhy.getText());
 		ArrayList<String> valAnswList = new ArrayList<String>();
-		for (int i = 0; i < numValidAnswer; ++i)
-			valAnswList.add(validAnswerList.get(i).getText());
+		for (int i = 0; i < numValidAnswer; ++i) 
+			if (!validAnswerList.get(i).getText().isEmpty())
+				valAnswList.add(validAnswerList.get(i).getText());
 		questionTO.setValidAnswers(valAnswList);
 		ArrayList<PrecursorTO> precList = new ArrayList<PrecursorTO>();
 		for (int i = 0; i < numPrecursor; ++i) {
@@ -345,8 +346,9 @@ public class ModifyQuestionController extends MainController {
     	if (updateEntitiesAS.updateEntities(parameter)) {
 			app.setScreen("question", parameter2);
 		} else {
+			lblNotifyModQuestion.setWrapText(true);
 			lblNotifyModQuestion
-			.setText("Errore inaspettato o connessione internet assente!");
+			.setText("Errore inaspettato o connessione internet assente");
 		}
 	}
 
