@@ -50,7 +50,7 @@
             </Label>
          </top>
          <bottom>
-            <Button fx:id="btnAnswer" mnemonicParsing="false" onAction="#handleButtonAnswer" text="Answer" BorderPane.alignment="CENTER_RIGHT">
+            <Button fx:id="btnAnswer" mnemonicParsing="false" onAction="#handleButtonAnswer" styleClass="ipad-blue" text="Answer" BorderPane.alignment="CENTER_RIGHT">
                <font>
                   <Font size="20.0" />
                </font>

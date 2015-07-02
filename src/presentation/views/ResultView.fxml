@@ -18,7 +18,7 @@
             </Label>
          </top>
          <bottom>
-            <Button fx:id="btnRetract" mnemonicParsing="false" onAction="#handleButtonRetract" text="RETRACT" BorderPane.alignment="CENTER_RIGHT">
+            <Button fx:id="btnRetract" mnemonicParsing="false" onAction="#handleButtonRetract" styleClass="ipad-blue" stylesheets="@../css/application.css" text="RETRACT" BorderPane.alignment="CENTER_RIGHT">
                <font>
                   <Font size="20.0" />
                </font>

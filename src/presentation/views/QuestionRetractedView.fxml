@@ -41,7 +41,7 @@
             </Label>
          </top>
          <bottom>
-            <Button fx:id="btnAnswerRetracted" mnemonicParsing="false" onAction="#handleButtonAnswerRetracted" text="Retract question" BorderPane.alignment="CENTER_RIGHT">
+            <Button fx:id="btnAnswerRetracted" mnemonicParsing="false" onAction="#handleButtonAnswerRetracted" styleClass="ipad-blue" text="Retract question" BorderPane.alignment="CENTER_RIGHT">
                <font>
                   <Font size="20.0" />
                </font>
