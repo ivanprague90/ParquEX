@@ -24,15 +24,16 @@ public class ParquEX extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		RetrievesEntitiesAS retrievesEntities = new RetrievesEntitiesAS();
-		retrievesEntities.retrievesEntities();
-
 		screensContainer.setFC(this);
 		screensContainer.loadScreen("main", ParquEX.mainFXML);
 		screensContainer.loadScreen("searchQuestion", ParquEX.searchQuestionFXML);
 		screensContainer.loadScreen("question", ParquEX.questionFXML);
 		screensContainer.loadScreen("searchRule", ParquEX.searchRuleFXML);
 		screensContainer.loadScreen("rule", ParquEX.ruleFXML);
+		
+		RetrievesEntitiesAS retrievesEntities = new RetrievesEntitiesAS();
+		retrievesEntities.retrievesEntities();
+
 		screensContainer.setScreen("main", null);
 
 		Scene scene = new Scene(screensContainer);
