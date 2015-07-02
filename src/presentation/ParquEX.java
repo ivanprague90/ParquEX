@@ -1,11 +1,12 @@
 package presentation;
 
-import business.QuestionService;
-import business.services.RetrievesEntitiesAS;
-import presentation.controllers.ScreenDispatcher;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import presentation.controllers.ScreenDispatcher;
+import business.QuestionService;
+import business.services.RetrievesEntitiesAS;
 
 public class ParquEX extends Application {
 	private static String mainFXML = "../views/MainView.fxml";
@@ -32,9 +33,9 @@ public class ParquEX extends Application {
 
 		Scene scene = new Scene(screensContainer);
 
-		//primaryStage.getIcons().add(
-				//new Image(getClass().getResourceAsStream(
-						//"views/images/icon.png")));
+		primaryStage.getIcons().add(
+				new Image(getClass().getResourceAsStream(
+						"views/image/icon.png")));
 		primaryStage.setTitle("ParquEX");
 		primaryStage.setScene(scene);
 		primaryStage.show();
