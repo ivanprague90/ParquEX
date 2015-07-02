@@ -1,11 +1,19 @@
 package presentation;
 
+import java.util.Optional;
+
 import business.services.RetrievesEntitiesAS;
 import presentation.controllers.ScreenDispatcher;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class ParquEX extends Application {
 	public static String mainFXML = "../views/MainView.fxml";
@@ -18,33 +26,54 @@ public class ParquEX extends Application {
 	public static String modifyRuleFXML = "../views/ModifyRuleView.fxml";
 	public static String addRuleFXML = "../views/AddRuleView.fxml";
 	public static String clipsRulesFXML = "../views/ClipsRulesView.fxml";
-	
-	
+
 	private ScreenDispatcher screensContainer = new ScreenDispatcher();
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		screensContainer.setFC(this);
 		screensContainer.loadScreen("main", ParquEX.mainFXML);
-		screensContainer.loadScreen("searchQuestion", ParquEX.searchQuestionFXML);
+		screensContainer.loadScreen("searchQuestion",
+				ParquEX.searchQuestionFXML);
 		screensContainer.loadScreen("question", ParquEX.questionFXML);
 		screensContainer.loadScreen("searchRule", ParquEX.searchRuleFXML);
 		screensContainer.loadScreen("rule", ParquEX.ruleFXML);
-		
-		RetrievesEntitiesAS retrievesEntities = new RetrievesEntitiesAS();
-		retrievesEntities.retrievesEntities();
+
+		try {
+			RetrievesEntitiesAS retrievesEntities = new RetrievesEntitiesAS();
+			retrievesEntities.retrievesEntities();
+		} catch (Exception e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("CONNESSIONE ASSENTE");
+			String s = "Assicurarsi di avere una connessione a internet attiva";
+			alert.setContentText(s);
+			Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+			stage.getIcons().add(new Image(getClass().getResourceAsStream("images/icon.png")));
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.isPresent()){
+				Platform.exit();
+				System.exit(1);
+			} 
+		}
 
 		screensContainer.setScreen("main", null);
 
 		Scene scene = new Scene(screensContainer);
 
 		primaryStage.getIcons().add(
-				new Image(getClass().getResourceAsStream(
-						"images/icon.png")));
+				new Image(getClass().getResourceAsStream("images/icon.png")));
 		primaryStage.setTitle("ParquEX");
 		primaryStage.setScene(scene);
 		primaryStage.setResizable(false);
 		primaryStage.show();
+
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent event) {
+				Platform.exit();
+				System.exit(0);
+			}
+		});
 	}
 
 	public static void main(String[] args) {
