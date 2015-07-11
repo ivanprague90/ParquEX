@@ -1,6 +1,8 @@
 package business.representations;
 
-public class EssenceListTO extends java.util.ArrayList<EssenceTO> {
+import java.util.ArrayList;
+
+public class EssenceListTO extends ArrayList<EssenceTO> {
 
     private static final long serialVersionUID = 1L;
 }

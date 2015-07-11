@@ -2,17 +2,21 @@ package business.services;
 
 import integration.AttributesDAO;
 import integration.DAOException;
+import integration.EssencesDAO;
+import integration.ImagesDAO;
 import integration.QuestionsDAO;
 import integration.RulesDAO;
-import integration.EssencesDAO;
 import business.Attribute;
 import business.Essence;
+import business.Image;
 import business.Question;
 import business.Rule;
 import business.representations.AttributeListTO;
 import business.representations.AttributeTO;
 import business.representations.EssenceListTO;
 import business.representations.EssenceTO;
+import business.representations.ImageListTO;
+import business.representations.ImageTO;
 import business.representations.QuestionListTO;
 import business.representations.QuestionTO;
 import business.representations.RuleListTO;
@@ -49,6 +53,13 @@ public class RetrievesEntitiesAS {
 			essenceList = essencesDAO.findAll();
 			for (EssenceTO essence : essenceList)
 				Essence.addEssence(essence);
+			
+			ImagesDAO imagesDAO = new ImagesDAO();
+			ImageListTO imageList;
+
+			imageList = imagesDAO.findAll();
+			for (ImageTO image : imageList.getList())
+				Image.addImage(image);
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

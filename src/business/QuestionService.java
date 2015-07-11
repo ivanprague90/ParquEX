@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import business.representations.ImageTO;
 import business.representations.QuestionTO;
 import business.representations.questions.precursors.PrecursorManager;
 
@@ -103,9 +104,8 @@ public class QuestionService {
 				.getQuestions().entrySet()) {
 			
 			if (!QuestionService.getQuestion(mang.getKey()).isAlready_added()) {
-				boolean ok = false;
-
-				ok = true;
+				boolean ok = true;
+				
 				for (PrecursorManager precMg : mang.getValue().getPrecursorMg()) {
 					if (!precMg.isAdmitted())
 						ok = false;
@@ -176,4 +176,17 @@ public class QuestionService {
 		
 		return question;
 	}
+	
+	static public void fillListImage () {
+		for (Map.Entry<String , QuestionManager> q : QuestionService.getQuestions().entrySet()) {
+			String attr = q.getValue().getAttribute();
+			
+			for (Map.Entry<String , ImageTO> s : Image.getImages().entrySet()) {
+				if (s.getKey() != null && s.getKey().toLowerCase().contains(attr.toLowerCase())) {
+					q.getValue().addImage(s.getKey());
+				}
+			}
+		}
+	}
+	
 }

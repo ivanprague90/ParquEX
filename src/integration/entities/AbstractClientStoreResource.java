@@ -5,17 +5,17 @@ import org.restlet.data.ChallengeScheme;
 import org.restlet.data.MediaType;
 import org.restlet.resource.ClientResource;
 
-public class AbstractClientResource {
+public class AbstractClientStoreResource {
 
     private static String username = "758fc797-c33a-4e37-a269-6f5ba8cd7f1b";
 
-    private static String password = "1738267a-c2f5-4054-91cd-0596a0a185f5";
+    private static String password = "8c632175-acaa-4536-9023-3b1910b3927b";
 
-    private final static String endpoint = "https://parquex.apispark.net/v1";
+    private final static String endpoint = "https://parqueximages.apispark.net/v1";
 
     private String path;
 
-    public AbstractClientResource(String basePath) {
+    public AbstractClientStoreResource(String basePath) {
         this.path = endpoint + basePath;
     }
 

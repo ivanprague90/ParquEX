@@ -19,7 +19,7 @@ public class QuestionManager extends QuestionTO {
 	private List<PrecursorManager> precursorMg;
 	
 	private String answer;
-
+	
 
 	// CONSTRUCTORS
 	public QuestionManager() {
@@ -38,10 +38,16 @@ public class QuestionManager extends QuestionTO {
 		this.setTheQuestion(q.getTheQuestion());
 		this.setValidAnswers(q.getValidAnswers());
 		this.setWhy(q.getWhy());
+		
+		this.setImage(new ArrayList<String> ());
 
 		this.questionInterested = new ArrayList<String>();
 		this.answer = new String();
 	}	
+	
+	public void addImage (String im) {
+		super.getImage().add(im);
+	}
 
 	
 	// GETTERS AND SETTERS

@@ -48,7 +48,6 @@ public class QuestionRetractedController implements Initializable,
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		questionAnswered = new HashMap<String, QuestionManager>();
 		vbxAnswerRetracted.setPadding(new Insets(50, 20, 0, 0));
 		vbxAnswerRetracted.setSpacing(50);
@@ -56,6 +55,7 @@ public class QuestionRetractedController implements Initializable,
 		lblQuestionRetracted.setFont(new Font("Arial", 20));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onSetScreen(Parameter parameter) {
 

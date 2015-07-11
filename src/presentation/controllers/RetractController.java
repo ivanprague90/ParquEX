@@ -56,6 +56,7 @@ public class RetractController implements Initializable, ScreenController {
 	public void onSetScreen(Parameter parameter) {
 		questionAnswered = new HashMap<String, QuestionManager>();
 		selectedQuestion = new QuestionManager();
+		selectedQuestion = null;
 		tbvAllQuestion.getSelectionModel().clearSelection();
 		
 		btnRetractQuestion.setDisable(true);

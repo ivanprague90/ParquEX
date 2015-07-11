@@ -8,73 +8,84 @@ import business.representations.questions.precursors.PrecursorTO;
 
 public class QuestionTO implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private String attribute;
-    
-    public String getAttribute() {
-        return attribute;
-    }
+	private String attribute;
 
-    public void setAttribute(String attribute) {
-        this.attribute = attribute;
-    }
+	public String getAttribute() {
+		return attribute;
+	}
 
-    private String theQuestion;
-    
-    public String getTheQuestion() {
-        return theQuestion;
-    }
+	public void setAttribute(String attribute) {
+		this.attribute = attribute;
+	}
 
-    public void setTheQuestion(String theQuestion) {
-        this.theQuestion = theQuestion;
-    }
+	private String theQuestion;
 
+	public String getTheQuestion() {
+		return theQuestion;
+	}
 
-    private List<PrecursorTO> precursors;    
-    
-    public List<PrecursorTO> getPrecursors() {
-        if (precursors == null) {
-            precursors = new ArrayList<PrecursorTO>();
-        }
-        return precursors;
-    }
+	public void setTheQuestion(String theQuestion) {
+		this.theQuestion = theQuestion;
+	}
 
-    public void setPrecursors(List<PrecursorTO> precursors) {
-        this.precursors = precursors;
-    }
+	private List<PrecursorTO> precursors;
 
-    private String id;
-    
-    public String getId() {
-        return id;
-    }
+	public List<PrecursorTO> getPrecursors() {
+		if (precursors == null) {
+			precursors = new ArrayList<PrecursorTO>();
+		}
+		return precursors;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setPrecursors(List<PrecursorTO> precursors) {
+		this.precursors = precursors;
+	}
 
-    private String why;
-    
-    public String getWhy() {
-        return why;
-    }
+	private String id;
 
-    public void setWhy(String why) {
-        this.why = why;
-    }
+	public String getId() {
+		return id;
+	}
 
-    private List<String> validAnswers;    
-    
-    public List<String> getValidAnswers() {
-        if (validAnswers == null) {
-            validAnswers = new ArrayList<String>();
-        }
-        return validAnswers;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setValidAnswers(List<String> validAnswers) {
-        this.validAnswers = validAnswers;
-    }
+	private String why;
 
+	public String getWhy() {
+		return why;
+	}
+
+	public void setWhy(String why) {
+		this.why = why;
+	}
+
+	private List<String> validAnswers;
+
+	public List<String> getValidAnswers() {
+		if (validAnswers == null) {
+			validAnswers = new ArrayList<String>();
+		}
+		return validAnswers;
+	}
+
+	public void setValidAnswers(List<String> validAnswers) {
+		this.validAnswers = validAnswers;
+	}
+
+	private List<String> image;
+
+	public List<String> getImage() {
+		if (image == null) {
+			image = new ArrayList<String>();
+		}
+		return image;
+	}
+
+	public void setImage(List<String> image) {
+		this.image = image;
+	}
 }

@@ -23,6 +23,7 @@ public class ParquEX extends Application {
 		
 		QuestionService.modifyQuestion();
 		QuestionService.setPrecursorPreference();
+		QuestionService.fillListImage();
 
 		screensContainer.setFC(this);
 		screensContainer.loadScreen("main", ParquEX.mainFXML);

@@ -58,14 +58,13 @@ public class ResultController implements Initializable, ScreenController {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-
 		questionAnswered = new HashMap<String, QuestionManager>();
 
 		clips = new Environment();
 		clips.load("src/integration/clips/essence.clp");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onSetScreen(Parameter parameter) {		
 		
@@ -101,7 +100,6 @@ public class ResultController implements Initializable, ScreenController {
 				certainty = ((NumberValue) fv.getFactSlot("certainty"))
 						.intValue();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			Number n;
@@ -115,7 +113,6 @@ public class ResultController implements Initializable, ScreenController {
 				essenceName = ((LexemeValue) fv.getFactSlot("value"))
 						.lexemeValue();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -151,10 +148,6 @@ public class ResultController implements Initializable, ScreenController {
 						}	 
 			     }
 			});
-			
-			row.getChildren().addAll(nameEssence, pbs, pins);
-			
-			vbxResult.getChildren().add(row);
 		}
 
 	}
