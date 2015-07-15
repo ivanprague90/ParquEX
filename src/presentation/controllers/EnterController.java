@@ -74,7 +74,7 @@ public class EnterController implements Initializable, ScreenController {
 				Parameter par = new Parameter();
 				par.setValue(questionAnswered);
 				
-				app.setScreen("main", par);
+				app.setScreen("profile", par);
 			} else if (id == null)	
 				lblNotify.setText("L'username non esiste. Riprovare o registrarsi!");
 			else if (!UserService.validUser(id, password))

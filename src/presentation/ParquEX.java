@@ -16,6 +16,7 @@ public class ParquEX extends Application {
 	private static String questionRetractedFXML = "../views/QuestionRetractedView.fxml";
 	private static String enterFXML = "../views/EnterView.fxml";
 	private static String signUpFXML = "../views/SignUpView.fxml";
+	private static String profileFXML = "../views/ProfileView.fxml";
 	
 	private ScreenDispatcher screensContainer = new ScreenDispatcher();
 	
@@ -37,6 +38,7 @@ public class ParquEX extends Application {
 		screensContainer.loadScreen("questionRetracted", ParquEX.questionRetractedFXML);
 		screensContainer.loadScreen("enter", ParquEX.enterFXML);
 		screensContainer.loadScreen("signUp", ParquEX.signUpFXML);
+		screensContainer.loadScreen("profile", ParquEX.profileFXML);
 		screensContainer.setScreen("enter", null);
 
 		Scene scene = new Scene(screensContainer);

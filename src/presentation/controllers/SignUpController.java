@@ -23,6 +23,9 @@ public class SignUpController implements Initializable, ScreenController {
 
 	@FXML
 	private Button btnConfirm;
+	
+	@FXML
+    private Button btnLogin;
 
 	@FXML
 	private TextField txtUsername;
@@ -106,6 +109,12 @@ public class SignUpController implements Initializable, ScreenController {
 			lblNotifySignUp
 					.setText("Username, Password e Conferma password richiesti!");
 		}
+
+	}
+	
+	@FXML
+	private void handleButtonLogin(ActionEvent event) throws IOException {
+		app.setScreen("enter", null);
 
 	}
 }
