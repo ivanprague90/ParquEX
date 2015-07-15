@@ -6,11 +6,13 @@ import integration.EssencesDAO;
 import integration.ImagesDAO;
 import integration.QuestionsDAO;
 import integration.RulesDAO;
+import integration.UsersDAO;
 import business.Attribute;
 import business.Essence;
 import business.Image;
 import business.Question;
 import business.Rule;
+import business.User;
 import business.representations.AttributeListTO;
 import business.representations.AttributeTO;
 import business.representations.EssenceListTO;
@@ -21,6 +23,8 @@ import business.representations.QuestionListTO;
 import business.representations.QuestionTO;
 import business.representations.RuleListTO;
 import business.representations.RuleTO;
+import business.representations.UserListTO;
+import business.representations.UserTO;
 
 public class RetrievesEntitiesAS {
 
@@ -53,6 +57,13 @@ public class RetrievesEntitiesAS {
 			essenceList = essencesDAO.findAll();
 			for (EssenceTO essence : essenceList)
 				Essence.addEssence(essence);
+			
+			UsersDAO usersDAO = new UsersDAO();
+			UserListTO userList;
+
+			userList = usersDAO.findAll();
+			for (UserTO user : userList)
+				User.addUser(user);
 			
 			ImagesDAO imagesDAO = new ImagesDAO();
 			ImageListTO imageList;

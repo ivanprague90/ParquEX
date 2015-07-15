@@ -8,7 +8,9 @@ import java.util.Random;
 
 import business.representations.ImageTO;
 import business.representations.QuestionTO;
+import business.representations.UserTO;
 import business.representations.questions.precursors.PrecursorManager;
+import business.representations.users.question.Questions;
 
 public class QuestionService {
 	private static final Map<String, QuestionManager> QUESTIONSMANAGER = new HashMap<String, QuestionManager>();
@@ -187,6 +189,21 @@ public class QuestionService {
 				}
 			}
 		}
+	}
+	
+	
+	static public Map<String, QuestionManager> createQuestionAnsweredLoggedUser (UserTO user) {
+		List<Questions> q = new ArrayList<Questions> (user.getQuestions());
+		Map<String, QuestionManager> questionAnswered = new HashMap<String, QuestionManager> ();
+		
+		for (Questions quest : q) {
+			QuestionManager qm = QuestionService.getQuestion(quest.getIdQuestion());
+			qm.setAnswer(quest.getAnswer());
+			qm.setAlready_added(true);
+			questionAnswered.put(quest.getIdQuestion(), qm);
+		}
+	
+		return questionAnswered;
 	}
 	
 }

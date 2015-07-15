@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="CarLoan" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/application.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controllers.SignUpController">
+   <children>
+      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="130.0">
+               <children>
+                  <StackPane prefHeight="296.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="296.0" fitWidth="798.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </StackPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane>
+               <children>
+                  <BorderPane prefHeight="600.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <top>
+                        <Label text="REGISTRATI" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font size="35.0" />
+                           </font>
+                           <padding>
+                              <Insets top="15.0" />
+                           </padding>
+                        </Label>
+                     </top>
+                     <bottom>
+                        <BorderPane BorderPane.alignment="CENTER">
+                           <top>
+                              <Label fx:id="lblNotifySignUp" alignment="CENTER" prefWidth="500.0" textFill="RED" BorderPane.alignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </top>
+                           <center>
+                              <Button fx:id="btnConfirm" mnemonicParsing="false" onAction="#handleButtonConfirm" styleClass="ipad-blue" text="CONFIRM" BorderPane.alignment="CENTER_RIGHT">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <BorderPane.margin>
+                                    <Insets bottom="15.0" right="15.0" />
+                                 </BorderPane.margin>
+                              </Button>
+                           </center>
+                        </BorderPane>
+                     </bottom>
+                     <padding>
+                        <Insets left="15.0" right="15.0" />
+                     </padding>
+                     <center>
+                        <VBox alignment="TOP_CENTER" spacing="10.0" BorderPane.alignment="TOP_CENTER">
+                           <children>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="105.0" text="Username:">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtUsername" prefWidth="225.0" />
+                                    <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                       <children>
+                                          <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="185.0" text="E-Mail:">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txtEmail" prefWidth="225.0" promptText="example@example.ex" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="105.0" text="Password:">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <PasswordField fx:id="txtPassword" prefWidth="225.0" />
+                                    <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                       <children>
+                                          <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="185.0" text="Conferma password:">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <PasswordField fx:id="txtConfirmPwd" prefWidth="225.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="105.0" text="Nome:">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtName" prefWidth="225.0" />
+                                    <HBox alignment="CENTER_LEFT" spacing="5.0">
+                                       <children>
+                                          <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="185.0" text="Cognome:">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="txtSurname" prefWidth="225.0" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Label nodeOrientation="LEFT_TO_RIGHT" prefWidth="105.0" text="Cod. fiscale:">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtTaxCode" prefWidth="225.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets top="15.0" />
+                           </padding>
+                        </VBox>
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -9,7 +9,7 @@ public class AbstractClientResource {
 
     private static String username = "758fc797-c33a-4e37-a269-6f5ba8cd7f1b";
 
-    private static String password = "1738267a-c2f5-4054-91cd-0596a0a185f5";
+    private static String password = "5c7e62bb-09be-4a31-9751-710fe877e5b7";
 
     private final static String endpoint = "https://parquex.apispark.net/v1";
 

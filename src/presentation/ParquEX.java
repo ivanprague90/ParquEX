@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import presentation.controllers.ScreenDispatcher;
 import business.QuestionService;
+import business.representations.UserTO;
 import business.services.RetrievesEntitiesAS;
 
 public class ParquEX extends Application {
@@ -13,8 +14,12 @@ public class ParquEX extends Application {
 	private static String resultFXML = "../views/ResultView.fxml";
 	private static String retractFXML = "../views/RetractView.fxml";
 	private static String questionRetractedFXML = "../views/QuestionRetractedView.fxml";
+	private static String enterFXML = "../views/EnterView.fxml";
+	private static String signUpFXML = "../views/SignUpView.fxml";
 	
 	private ScreenDispatcher screensContainer = new ScreenDispatcher();
+	
+	private UserTO loggedUser;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -30,7 +35,9 @@ public class ParquEX extends Application {
 		screensContainer.loadScreen("result", ParquEX.resultFXML);
 		screensContainer.loadScreen("retract", ParquEX.retractFXML);
 		screensContainer.loadScreen("questionRetracted", ParquEX.questionRetractedFXML);
-		screensContainer.setScreen("main", null);
+		screensContainer.loadScreen("enter", ParquEX.enterFXML);
+		screensContainer.loadScreen("signUp", ParquEX.signUpFXML);
+		screensContainer.setScreen("enter", null);
 
 		Scene scene = new Scene(screensContainer);
 
@@ -44,6 +51,18 @@ public class ParquEX extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	public UserTO getLoggedUser() {
+		return loggedUser;
+	}
+
+	public void setLoggedUser(UserTO user) {
+		loggedUser = user;
+	}
+
+	public void userLogout() {
+		loggedUser = null;
 	}
 
 }
