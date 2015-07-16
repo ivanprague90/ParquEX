@@ -40,14 +40,17 @@ public class ResultController implements Initializable, ScreenController {
 	@FXML
 	private Button btnRetract;
 	
+    @FXML
+    private Button btnGoToProfile;
+
 	@FXML
-    private Label lblEssence;
+	private Label lblEssence;
 
-    @FXML
-    private Label lblDescription;
+	@FXML
+	private Label lblDescription;
 
-    @FXML
-    private Label lblProperty;
+	@FXML
+	private Label lblProperty;
 
 	// Per inizializzazioni di schermata con uso di page usare overriding
 	// del metodo setScreenPane altrimenti overriding del metodo initialize
@@ -66,19 +69,19 @@ public class ResultController implements Initializable, ScreenController {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void onSetScreen(Parameter parameter) {		
-		
+	public void onSetScreen(Parameter parameter) {
+
 		lblDescription.setText("");
 		lblEssence.setText("");
 		lblProperty.setText("");
-		
+
 		clips.reset();
-		
+
 		vbxResult.getChildren().clear();
-		
+
 		questionAnswered = (HashMap<String, QuestionManager>) parameter
 				.getValue(0);
-		
+
 		this.assertInClips();
 
 		String evalStr = "(ESSENCES::get-essence-list)";
@@ -122,32 +125,48 @@ public class ResultController implements Initializable, ScreenController {
 			pbs.setPrefWidth(100);
 			row.setSpacing(10);
 			row.getChildren().clear();
-			
-			row.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
-			     @Override
-			     public void handle(MouseEvent event) {
-			    	 for (Map.Entry<String, EssenceTO> allEssences : Essence.getEssences().entrySet()) {
-							String name = new String();
-							name = allEssences.getValue().getName();
-							name = Normalizer.normalize(name, Normalizer.Form.NFD);
-							
-							if (((Label) row.getChildren().get(0)).getText().toLowerCase().replaceAll("-", " ").equals(name.toLowerCase().replaceAll("[^\\p{ASCII}]", ""))) {
-								
-								lblEssence.setText(allEssences.getValue().getName().toUpperCase());
-								lblDescription.setText(allEssences.getValue().getDescription());
-								
-								String property = new String();
-								for (PropertyTO prop : allEssences.getValue().getProperty()) {
-									property += prop.getKey() + ": " + prop.getValue() + "\n";
+			row.addEventFilter(MouseEvent.MOUSE_CLICKED,
+					new EventHandler<MouseEvent>() {
+
+						@Override
+						public void handle(MouseEvent event) {
+							for (Map.Entry<String, EssenceTO> allEssences : Essence
+									.getEssences().entrySet()) {
+								String name = new String();
+								name = allEssences.getValue().getName();
+								name = Normalizer.normalize(name,
+										Normalizer.Form.NFD);
+
+								if (((Label) row.getChildren().get(0))
+										.getText()
+										.toLowerCase()
+										.replaceAll("-", " ")
+										.equals(name.toLowerCase().replaceAll(
+												"[^\\p{ASCII}]", ""))) {
+
+									lblEssence.setText(allEssences.getValue()
+											.getName().toUpperCase());
+									lblDescription.setText(allEssences
+											.getValue().getDescription());
+
+									String property = new String();
+									for (PropertyTO prop : allEssences
+											.getValue().getProperty()) {
+										property += prop.getKey() + ": "
+												+ prop.getValue() + "\n";
+									}
+
+									lblProperty.setText(property);
 								}
-								
-								lblProperty.setText(property);
+
 							}
-							
-						}	 
-			     }
-			});
+						}
+					});
+
+			row.getChildren().addAll(nameEssence, pbs, pins);
+
+			vbxResult.getChildren().add(row);
 		}
 
 	}
@@ -175,4 +194,12 @@ public class ResultController implements Initializable, ScreenController {
 		app.setScreen("retract", parameter);
 
 	}
+	
+	@FXML
+	private void handleButtonGoToProfile(ActionEvent event) throws IOException {
+
+		app.setScreen("profile", null);
+
+	}
+	
 }

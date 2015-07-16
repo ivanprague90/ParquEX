@@ -15,6 +15,7 @@ public class CreateUserAS {
 			String userId;
 			userId = usersDAO.create(user);
 			user.setId(userId);
+			user.setQuestions(null);
 			User.addUser(user);
 			return true;
 		} catch (DAOException e) {

@@ -28,11 +28,20 @@
                      <top>
                         <HBox spacing="20.0">
                            <children>
-                              <Label fx:id="lblWhy" layoutX="58.0" layoutY="10.0" onMouseEntered="#handle" text=" ? " textFill="#ff5e00">
-                                 <font>
-                                    <Font name="System Bold" size="50.0" />
-                                 </font>
-                              </Label>
+                              <StackPane>
+                                 <children>
+                                    <Label fx:id="lblWhy" onMouseEntered="#handle" text=" ? " textFill="#ff5e00">
+                                       <font>
+                                          <Font name="System Bold" size="50.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lblWhyT" layoutX="10.0" layoutY="10.0" onMouseEntered="#handle" text=" " textFill="#ff5e00">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </StackPane>
                               <Label fx:id="lblQuestion">
                                  <font>
                                     <Font size="40.0" />

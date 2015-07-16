@@ -18,11 +18,20 @@
             </Label>
          </top>
          <bottom>
-            <Button fx:id="btnRetract" mnemonicParsing="false" onAction="#handleButtonRetract" styleClass="ipad-blue" stylesheets="@../css/application.css" text="RETRACT" BorderPane.alignment="CENTER_RIGHT">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
+            <HBox alignment="TOP_RIGHT" spacing="120.0" BorderPane.alignment="TOP_RIGHT">
+               <children>
+                  <Button fx:id="btnGoToProfile" alignment="TOP_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#handleButtonGoToProfile" styleClass="ipad-blue" stylesheets="@../css/application.css" text="GO TO PROFILE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnRetract" mnemonicParsing="false" onAction="#handleButtonRetract" styleClass="ipad-blue" stylesheets="@../css/application.css" text="RETRACT QUESTION">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
          </bottom>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

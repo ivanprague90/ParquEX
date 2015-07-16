@@ -2,6 +2,8 @@ package presentation.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -9,8 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import presentation.Parameter;
+import business.QuestionManager;
 import business.QuestionService;
 import business.representations.UserTO;
 
@@ -58,6 +60,11 @@ public class ProfileController implements Initializable, ScreenController {
 		lblName.setText(user.getName());
 		lblSurname.setText(user.getSurname());
 		lblTaxCode.setText(user.getTaxcode());
+		
+		
+		btnLastSession.setDisable(false);
+		if (user.getQuestions().isEmpty())
+			btnLastSession.setDisable(true);
 
 	}
 
@@ -70,8 +77,9 @@ public class ProfileController implements Initializable, ScreenController {
 	@FXML
 	private void handleButtonLastSession(ActionEvent event) throws IOException {
 		Parameter parameter = new Parameter();
-		parameter.setValue(QuestionService.createQuestionAnsweredLoggedUser(app.getFC().getLoggedUser()));
-		app.setScreen("result", null);
+		Map<String,QuestionManager> questionAnswered = new HashMap<String,QuestionManager> (QuestionService.createQuestionAnsweredLoggedUser(app.getFC().getLoggedUser()));
+		parameter.setValue(questionAnswered);
+		app.setScreen("result", parameter);
 
 	}
 }

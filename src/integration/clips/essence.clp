@@ -114,10 +114,21 @@
 			  best-colore is bruno with certainty 50 and
 			  best-colore is rosso with certainty 50 and
 			  best-colore is scuro with certainty 50))
+			  
+  (rule (if sports is nonsolo)
+        (then best-colore is chiaro with certainty 50 and
+			  best-colore is bruno with certainty 80 and
+			  best-colore is rosso with certainty 50 and
+			  best-colore is scuro with certainty 50))
 
   (rule (if style is classico and 
             walls is chiara)
         (then best-colore is bruno with certainty 95 and
+			  best-colore is rosso with certainty 55))
+			  
+  (rule (if style is classico and 
+            walls is mista)
+        (then best-colore is chiaro with certainty 95 and
 			  best-colore is rosso with certainty 55))
 		
   (rule (if style is classico and 
@@ -127,6 +138,11 @@
 		
   (rule (if style is moderno and 
             walls is chiara)
+        (then best-colore is scuro with certainty 95 and
+			  best-colore is bruno with certainty 55))
+			  
+  (rule (if style is moderno and 
+            walls is mista)
         (then best-colore is scuro with certainty 95 and
 			  best-colore is bruno with certainty 55))
 
@@ -141,6 +157,12 @@
               best-colore is rosso with certainty 50 and
 			  best-colore is chiaro with certainty 50))
 			  
+(rule (if style is misto)
+        (then best-colore is scuro with certainty 50 and
+              best-colore is bruno with certainty 70 and
+              best-colore is rosso with certainty 70 and
+			  best-colore is chiaro with certainty 50))
+			  
   (rule (if walls is nonso)
         (then best-colore is scuro with certainty 50 and
               best-colore is bruno with certainty 50 and
@@ -149,12 +171,16 @@
 
   (rule (if color is chiaro)
         (then best-colore is chiaro with certainty 95 and
-              best-colore is rosso with certainty 55 and
-			  best-colore is bruno with certainty 35))
+              best-colore is rosso with certainty 35 and
+			  best-colore is bruno with certainty 15))
 
   (rule (if color is rosso)
         (then best-colore is rosso with certainty 95 and
               best-colore is chiaro with certainty 55 and
+			  best-colore is bruno with certainty 55))
+			  
+  (rule (if color is intermedio)
+        (then best-colore is rosso with certainty 55 and
 			  best-colore is bruno with certainty 55))
 		
   (rule (if color is bruno)
@@ -164,14 +190,18 @@
 		
   (rule (if color is scuro)
         (then best-colore is scuro with certainty 95 and
-              best-colore is rosso with certainty 35 and
-			  best-colore is bruno with certainty 55))
+              best-colore is rosso with certainty 15 and
+			  best-colore is bruno with certainty 35))
 
   ; Rules for picking the best ossidazione
   
   (rule (if location is esterne)
         (then best-ossidazione is bassa with certainty 95 and
               best-ossidazione is alta with certainty 35))
+			  
+(rule (if location is entrambe)
+        (then best-ossidazione is bassa with certainty 75 and
+              best-ossidazione is alta with certainty 45))
   
   (rule (if location is nonso)
         (then best-ossidazione is bassa with certainty 50 and
@@ -184,6 +214,9 @@
   (rule (if light is no)
         (then best-ossidazione is alta with certainty 95 and
               best-ossidazione is bassa with certainty 75))
+			  
+  (rule (if light is parzialmente)
+        (then best-ossidazione is alta))
   
   (rule (if light is nonso)
         (then best-ossidazione is alta with certainty 50 and
@@ -216,6 +249,11 @@
   (rule (if sports is nonso)
         (then best-durezza is media with certainty 55 and
               best-durezza is elevata with certainty 55 and
+              best-durezza is molto-elevata with certainty 55))
+			  
+  (rule (if sports is nonsolo)
+        (then best-durezza is media with certainty 95 and
+              best-durezza is elevata with certainty 75 and
               best-durezza is molto-elevata with certainty 55))
 			  
   (rule (if placing is casa)
@@ -251,6 +289,11 @@
               best-durezza is elevata with certainty 55 and
               best-durezza is molto-elevata with certainty 55))
 			  
+  (rule (if room is misto)
+        (then best-durezza is media with certainty 55 and
+              best-durezza is elevata with certainty 85 and
+              best-durezza is molto-elevata with certainty 55))
+			  
   ; Rules for picking the best assorbimento-umidita
   
   (rule (if location is esterne)
@@ -262,6 +305,11 @@
         (then best-assorbimento-umidita is medio with certainty 95 and
               best-assorbimento-umidita is basso with certainty 75 and
               best-assorbimento-umidita is alto with certainty 55))
+			  
+(rule (if location is entrambe)
+        (then best-assorbimento-umidita is medio with certainty 95 and
+              best-assorbimento-umidita is basso with certainty 45 and
+              best-assorbimento-umidita is alto with certainty 75))
 		
   (rule (if location is nonso)
         (then best-assorbimento-umidita is basso with certainty 50 and
@@ -292,6 +340,11 @@
         (then best-assorbimento-umidita is basso with certainty 55 and
 		      best-assorbimento-umidita is medio with certainty 55 and
               best-assorbimento-umidita is alto with certainty 55))
+			  
+  (rule (if room is misto)
+        (then best-assorbimento-umidita is basso with certainty 75 and
+		      best-assorbimento-umidita is medio with certainty 85 and
+              best-assorbimento-umidita is alto with certainty 55))
   
   ; Rules for picking the best resistenza-escursioni
   
@@ -301,6 +354,10 @@
   (rule (if location is interne)
         (then best-resistenza-escursioni is alta with certainty 55 and
               best-resistenza-escursioni is bassa with certainty 75))
+			  
+(rule (if location is entrambe)
+        (then best-resistenza-escursioni is alta with certainty 75 and
+              best-resistenza-escursioni is bassa with certainty 45))
 		
   (rule (if location is nonso)
         (then best-resistenza-escursioni is bassa with certainty 50 and
@@ -317,6 +374,10 @@
   (rule (if heating is nonso)
         (then best-resistenza-escursioni is bassa with certainty 55 and
               best-resistenza-escursioni is alta with certainty 75))
+			  
+  (rule (if heating is nontotalmente)
+        (then best-resistenza-escursioni is bassa with certainty 45 and
+              best-resistenza-escursioni is alta with certainty 85))
   
   ; Rules for picking the best fibratura
   
@@ -331,12 +392,15 @@
   (rule (if grain is nonso)
         (then best-fibratura is dritta with certainty 50 and
               best-fibratura is ondulata with certainty 50))
+			  
+  (rule (if grain is mista)
+        (then best-fibratura is dritta with certainty 50 and
+              best-fibratura is ondulata with certainty 80))
   
   ; Rules for picking the best origine
   
   (rule (if budget is si)
-        (then best-origine is europea with certainty 95 and
-              best-origine is esotica with certainty 55))
+        (then best-origine is europea))
 		
   (rule (if budget is no)
         (then best-origine is esotica with certainty 95 and
@@ -404,14 +468,14 @@
 		(resistenza-escursioni bassa)
 		(fibratura dritta)
 		(origine europea))
-  (essence (name Noce-Americano) 
+  (essence (name Noce-Europeo) 
 		(colore bruno) 
 		(ossidazione bassa) 
 		(durezza media)
 		(assorbimento-umidita medio)
 		(resistenza-escursioni bassa)
 		(fibratura ondulata)
-		(origine esotica))
+		(origine europea))
   (essence (name Doussie) 
 		(colore rosso) 
 		(ossidazione alta)

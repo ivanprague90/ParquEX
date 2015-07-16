@@ -42,9 +42,14 @@ public class MainController implements Initializable, ScreenController {
 	private ToggleGroup g;
 	private QuestionManager q;
 	private RadioButton rbAnswer;
+	
+	private Tooltip tool = new Tooltip();
 
 	@FXML
 	private Label lblWhy;
+	
+	@FXML
+	private Label lblWhyT;
 
 	@FXML
 	private Label lblQuestion;
@@ -80,7 +85,7 @@ public class MainController implements Initializable, ScreenController {
 	public void onSetScreen(Parameter parameter) {
 
 		borderInner.setRight(null);
-		
+
 		if (parameter != null) {
 			questionAnswered = new HashMap<String, QuestionManager>(
 					(HashMap<String, QuestionManager>) parameter.getValue(0));
@@ -123,13 +128,14 @@ public class MainController implements Initializable, ScreenController {
 				String answ = it.next();
 				rbAnswer = new RadioButton();
 				rbAnswer.setFont(new Font("Arial", 15));
-				rbAnswer.setText(answ);				
+				rbAnswer.setText(answ);
 				rbAnswer.setToggleGroup(g);
 				vbxAnswer.getChildren().add(rbAnswer);
 			}
 			if (!q.getImage().isEmpty()) {
-				Label l = new Label("\n\n\n\n\n\n\nClicca sulle varie risposte per visualizzare un immagine di aiuto");
-				l.setFont(new Font("Arial",15));
+				Label l = new Label(
+						"\n\n\n\n\n\n\nClicca sulle varie risposte per visualizzare un immagine di aiuto");
+				l.setFont(new Font("Arial", 15));
 				borderInner.setRight(l);
 			}
 
@@ -140,34 +146,31 @@ public class MainController implements Initializable, ScreenController {
 						public void changed(
 								ObservableValue<? extends Toggle> ov, Toggle t,
 								Toggle t1) {
-							
+
 							RadioButton chk = (RadioButton) t1.getToggleGroup()
 									.getSelectedToggle();
 							String ss = chk.getText();
-							
+
 							ImageView im = null;
 
 							if (!q.getImage().isEmpty()) {
-								ImagesDAO ima = new ImagesDAO();
+
+								// ImagesDAO ima = new ImagesDAO();
 								boolean b = false;
 								for (String s : q.getImage()) {
 									im = new ImageView();
 									if (s.toLowerCase().contains(
 											ss.toLowerCase())) {
-										try {
-											im.setImage(new Image(ima.find(s)
-													.getStream()));
-											b = true;
-											borderInner.setRight(im);
-										} catch (IOException e) {
-											e.printStackTrace();
-										} catch (DAOException e) {
-											e.printStackTrace();
-										}
+
+										im.setImage(new Image(getClass()
+												.getResourceAsStream(
+														"../views/image/" + s)));
+										b = true;
+										borderInner.setRight(im);
 									}
 
-								}if(!b)
-									//borderInner.setRight(null);	
+								}
+								if (!b)
 									borderInner.setRight(im);
 							}
 						}
@@ -178,17 +181,16 @@ public class MainController implements Initializable, ScreenController {
 
 	@FXML
 	private void handle(MouseEvent arg0) {
-		final Tooltip tooltip = new Tooltip();
+		 tool.setText(q.getWhy());
 
-		ToolTipManager.sharedInstance().setDismissDelay(0);
-		tooltip.setFont(Font.font("", 0.5));
-		tooltip.setText(q.getWhy());
-
-		lblWhy.setTooltip(tooltip);
+		 //tool.setFont(new Font("Arial", 8));
+	
+		lblWhyT.setTooltip(tool);
 	}
 
 	@FXML
-	private void handleButtonAnswer(ActionEvent event) throws IOException {
+	private void handleButtonAnswer(ActionEvent event) throws IOException,
+			DAOException {
 
 		q.setAnswer(((RadioButton) g.getSelectedToggle()).getText());
 		questionAnswered.put(q.getId(), q);
@@ -202,6 +204,8 @@ public class MainController implements Initializable, ScreenController {
 		if (!entryQuestion.isEmpty())
 			this.onSetScreen(null);
 		else {
+			QuestionService.saveQuestionIntoUser(app.getFC().getLoggedUser(),
+					questionAnswered);
 			Parameter parameter = new Parameter();
 			parameter.setValue(questionAnswered);
 			app.setScreen("result", parameter);

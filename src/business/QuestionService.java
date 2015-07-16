@@ -1,5 +1,8 @@
 package business;
 
+import integration.DAOException;
+import integration.UsersDAO;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -204,6 +207,20 @@ public class QuestionService {
 		}
 	
 		return questionAnswered;
+	}
+	
+	static public void saveQuestionIntoUser(UserTO user, Map<String, QuestionManager> questionAnswered) throws DAOException {
+		List<Questions> qq = new ArrayList<Questions>();
+		
+		for(Map.Entry<String, QuestionManager> q : questionAnswered.entrySet()) {
+			Questions qs = new Questions();
+			qs.setIdQuestion(q.getKey());
+			qs.setAnswer(q.getValue().getAnswer());
+			qq.add(qs);
+		}
+		user.setQuestions(qq);
+		UsersDAO us = new UsersDAO();
+		us.update(user);
 	}
 	
 }

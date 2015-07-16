@@ -106,5 +106,9 @@ private String password;
     public void setQuestions(List<Questions> questions) {
         this.questions = questions;
     }
+    
+    public void addQuestions(Questions q) {
+        this.questions.add(q);
+    }
 
 }
